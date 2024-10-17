@@ -6,7 +6,7 @@ const app = express();
 const port = 4000;
 
 
-const API_URL = process.env.API_URL || "https://show-bookkeep-1.onrender.com";
+const API_URL = process.env.API_URL || "http://localhost:4000";
 
 // In-memory data store
 let posts = [
