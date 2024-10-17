@@ -15,35 +15,33 @@
     </h1>
 
     <% if (locals.post) { %>
-      <form id="editForm" method="post" action="/api/posts/<%=post.id%>">
-        <input type="text" name="title" value="<%=post.title %>" >
-        <textarea name="description" rows="10"><%=post.description %></textarea>
-        <input type="text" name="genre" value="<%=post.genre %>">
-        <input type="number" name="rating" value="<%=post.rating %>">
-        <input type="text" name="watched" value="<%=post.watched %>">
-        <input type="text" name="whatILike" value="<%=post.whatILike %>" >
-        <button class="full-width" type="submit" >
+      <form id="editForm" method="post" action="/api/posts/<%= post.id %>">
+        <input type="text" name="title" value="<%= post.title %>" required>
+        <textarea name="description" rows="10" required><%= post.description %></textarea>
+        <input type="text" name="genre" value="<%= post.genre %>" required>
+        <input type="number" name="rating" value="<%= post.rating %>" required>
+        <input type="text" name="watched" value="<%= post.watched %>" required>
+        <input type="text" name="whatILike" value="<%= post.whatILike %>" required>
+        <input type="text" name="image" value="<%= post.image %>" required placeholder="Image URL">
+        <button class="full-width" type="submit">
           <%= submit %>
         </button>
       </form>
-      <% } else {%>
-        <form id="newPostForm" method="post" action="/api/posts">
-          <input type="text" name="title" required placeholder= "Show name">
-          <textarea name="description" rows="10" required placeholder= "Show description" ></textarea>
-          <input type="text" name="genre" required placeholder="genre">
-          <input type="number" name="rating" required placeholder="rating out of 10">
-          <input type="text" name="watched" required placeholder="Have you watched the show: yes or no">
-          <input type="text" name="whatILike"  placeholder="If yes, what do you like about this show?">
-            <!-- Image upload field -->
-            <input type="file" name="image" accept="image/*">
-            
- 
-          <button class="full-width" type="submit">
-            <%= submit %>
-          </button>
-        </form>
-        <% } %>
-
+    <% } else { %>
+      <form id="newPostForm" method="post" action="/api/posts">
+        <input type="text" name="title" required placeholder="Show name">
+        <textarea name="description" rows="10" required placeholder="Show description"></textarea>
+        <input type="text" name="genre" required placeholder="Genre">
+        <input type="number" name="rating" required placeholder="Rating out of 10">
+        <input type="text" name="watched" required placeholder="Have you watched the show: yes or no">
+        <input type="text" name="whatILike" placeholder="If yes, what do you like about this show?" required>
+        <input type="text" name="image" required placeholder="Image URL">
+        
+        <button class="full-width" type="submit">
+          <%= submit %>
+        </button>
+      </form>
+    <% } %>
   </div>
 </body>
 
