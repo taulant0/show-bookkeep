@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog</title>
+  <link rel="stylesheet" href="/styles/main.css">
+  <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+</head>
+
+<body>
+  <div class="container">
+    
+    <h1 style="text-align: center;">Show Collection</h1>
+
+    <div class="container1">
+      <a id="newPostBtn" href="/new">Add a new show</a>
+    </div>
+ 
+    <ul id="postsList">
+      <% posts.forEach(post=> { %>
+        <li>
+          <h2 style="text-align: center;">
+            <%=post.title%>
+          </h2>
+          <h3 style="text-align: justify; font-weight: 400;">Description:
+            <%=post.description%>
+          </h3>
+          <p >Genre:
+            <%=post.genre%>
+          </p>
+          <p>Rating:
+            <%=post.rating%>
+          </p>
+          <p>Have I watched this show:<span style="font-weight: bold;"> <%=post.watched%></span>
+           
+         </p>
+          <p style="text-align: justify;">What I like about this show:
+            <%=post.whatILike%>
+          </p>
+         
+
+          <div class="container1">
+            <% if (post.image) { %>
+              <img class="movie-image" src="<%= post.image %>" alt="Show Image" />
+            <% } %>
+          </div>
+          
+     <div class="container1">
+      <a class="edit" href="/edit/<%= post.id %>">Edit</a>
+      <a class="delete" href="/api/posts/delete/<%= post.id %>">Delete</a>
+     </div>
+
+        </li>
+        <% }); %>
+    </ul>
+  </div>
+
+  
+</body>
+
+</html>
